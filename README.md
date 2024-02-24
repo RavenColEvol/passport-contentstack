@@ -63,7 +63,7 @@ app.get('/auth/contentstack/callback',
 
 ## Examples
 
-For a complete, working example, refer to the [login example](https://github.com/RavenColEvol/passport-contentstack/tree/main/examples/).
+For a complete, working example, refer to the [login example](https://github.com/RavenColEvol/passport-contentstack/tree/main/example/).
 
 ## Tests
 
