@@ -28,7 +28,10 @@ specifying a client ID, client secret, and callback URL.
 passport.use(new ContentstackStrategy({
     clientID: CONTENTSTACK_CLIENT_ID,
     clientSecret: CONTENTSTACK_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/contentstack/callback"
+    authorizationURL:
+      "https://app.contentstack.com/apps/<APP_INSTALLATION_UID>/authorize",
+    callbackURL: "http://localhost:3000/auth/callback",
+    region: "<NA|EU|AZURE_NA|AZURE_EU>",
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ email: profile.email }, function (err, user) {
