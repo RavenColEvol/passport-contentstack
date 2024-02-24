@@ -48,7 +48,7 @@ application:
 
 ```javascript
 app.get('/auth/contentstack',
-  passport.authenticate('contentstack', { scope: [ 'user:email' ] }));
+  passport.authenticate('contentstack'));
 
 app.get('/auth/contentstack/callback', 
   passport.authenticate('contentstack', { failureRedirect: '/login' }),
@@ -60,7 +60,7 @@ app.get('/auth/contentstack/callback',
 
 ## Examples
 
-For a complete, working example, refer to the [login example](https://github.com/RavenColEvol/passport-contentstack/tree/main/examples/login).
+For a complete, working example, refer to the [login example](https://github.com/RavenColEvol/passport-contentstack/tree/main/examples/).
 
 ## Tests
 
