@@ -24,6 +24,7 @@ const regionAPIBaseURLs = {
 
 export default class ContentstackStrategy extends OAuth2Strategy {
   _profileURL: string;
+  _region: string;
 
   constructor(options, verify) {
     options["region"] = options["region"] || Regions.NA;
@@ -33,6 +34,7 @@ export default class ContentstackStrategy extends OAuth2Strategy {
 
     super(options, verify);
 
+    this._region = options.region;
     this._profileURL = `${regionAPIBaseURLs[options.region]}/v3/user`;
     this._oauth2.useAuthorizationHeaderforGET(true);
   }
@@ -64,6 +66,7 @@ export default class ContentstackStrategy extends OAuth2Strategy {
       try {
         const profile: any = parse(json);
         
+        profile.region = this._region;
         return done(null, profile);
       } catch (e) {
         return done(e);
