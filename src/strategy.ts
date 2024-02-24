@@ -63,9 +63,7 @@ export default class ContentstackStrategy extends OAuth2Strategy {
 
       try {
         const profile: any = parse(json);
-        profile._raw = body;
-        profile._json = json;
-
+        
         return done(null, profile);
       } catch (e) {
         return done(e);
