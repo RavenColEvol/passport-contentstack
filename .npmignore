@@ -2,7 +2,7 @@ Makefile
 README.md
 build/
 docs/
-examples/
+example/
 reports/
 support/
 test/

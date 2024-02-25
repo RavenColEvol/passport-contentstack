@@ -1,7 +1,7 @@
 import OAuth2Strategy, { InternalOAuthError, StrategyOptions } from "passport-oauth2";
 import { parse } from "./profile";
 
-enum Regions {
+export enum Regions {
   NA = "NA",
   EU = "EU",
   AZURE_NA = 'AZURE_NA',
@@ -22,9 +22,9 @@ const regionAPIBaseURLs = {
   [Regions.AZURE_EU]: "https://azure-eu-api.contentstack.com",
 }
 
-interface ContentstackOptions extends Omit<StrategyOptions, 'tokenURL'> {
+export interface ContentstackOptions extends Omit<StrategyOptions, 'tokenURL'> {
   tokenURL: string;
-  region?: string;
+  region?: Regions;
 }
 
 export default class ContentstackStrategy extends OAuth2Strategy {

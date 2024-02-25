@@ -1,6 +1,8 @@
-import ContentstackStrategy from "./strategy";
+import ContentstackStrategy, { Regions, ContentstackOptions } from "./strategy";
 
 export default ContentstackStrategy;
 export {
-  ContentstackStrategy
+  ContentstackStrategy,
+  Regions,
+  ContentstackOptions
 }
