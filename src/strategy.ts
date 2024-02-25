@@ -23,7 +23,7 @@ const regionAPIBaseURLs = {
 }
 
 export interface ContentstackOptions extends Omit<StrategyOptions, 'tokenURL'> {
-  tokenURL: string;
+  tokenURL?: string;
   region?: Regions;
 }
 
@@ -37,7 +37,7 @@ export default class ContentstackStrategy extends OAuth2Strategy {
       options["tokenURL"] ||
       `${regionBaseURLs[options.region]}/apps-api/apps/token`;
 
-    super(options, verify);
+    super(options as StrategyOptions, verify);
 
     this._region = options.region;
     this._profileURL = `${regionAPIBaseURLs[options.region]}/v3/user`;
