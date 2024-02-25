@@ -3,7 +3,7 @@ const express = require("express");
 //* 1. IMPORT PASSPORT AND REQUIRED PACKAGES FOR SESSION
 const session = require("express-session");
 const passport = require("passport");
-const { ContentstackStrategy } = require("@lamkoti/passport-contentstack");
+const { ContentstackStrategy } = require("passport-contentstack");
 
 const app = express();
 app.use(express.json());

@@ -12,7 +12,7 @@ unobtrusively integrated into any application or framework that supports
 ## Installation
 
 ```shell
-$ npm install @lamkoti/passport-contentstack
+$ npm install passport-contentstack
 ```
 
 ## Usage

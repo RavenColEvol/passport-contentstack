@@ -1,5 +1,5 @@
 {
-  "name": "@lamkoti/passport-contentstack",
+  "name": "passport-contentstack",
   "version": "0.0.3",
   "description": "Contentstack authentication strategy for Passport.",
   "main": "./dist/lib/index.js",
