@@ -65,6 +65,8 @@ app.get('/auth/contentstack/callback',
 
 For a complete, working example, refer to the [login example](https://github.com/RavenColEvol/passport-contentstack/tree/main/example/).
 
+For Nest.js example it will follow a similar pattern from here [auth example](https://github.com/bojidaryovchev/nest-angular/tree/master/src/server/modules/auth).
+
 ## Tests
 
 ```shell
