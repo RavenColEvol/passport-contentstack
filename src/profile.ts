@@ -1,4 +1,6 @@
-export function parse(json: { user: Record<string, string> }) {
+import { User } from "./types";
+
+export function parse(json: { user: Record<string, string> }): User {
   const { user } = json;
   var profile = {
     uid: user.uid,
