@@ -1,9 +1,9 @@
-const express = require("express");
+import express from 'express';
 
 //* 1. IMPORT PASSPORT AND REQUIRED PACKAGES FOR SESSION
-const session = require("express-session");
-const passport = require("passport");
-const { ContentstackStrategy } = require("passport-contentstack");
+import session from 'express-session';
+import passport from 'passport';
+import { ContentstackStrategy, Regions } from 'passport-contentstack';
 
 const app = express();
 app.use(express.json());
@@ -27,12 +27,13 @@ passport.deserializeUser(function (obj, done) {
 //* 3. INITIALIZE THE CONTENTSTACK STRATEGY
 const strategy = new ContentstackStrategy(
   {
-    clientID: "YOUR_CLIENT_ID",
-    clientSecret: "YOUR_CLIENT_SECRET",
-    authorizationURL:
-      "https://app.contentstack.com/apps/<APP_INSTALLATION_UID>/authorize",
-    callbackURL: "http://localhost:3000/auth/callback",
-    region: "<NA|EU|AZURE_NA|AZURE_EU>",
+    oauthConfig: {
+      region: Regions.NA,
+      clientID: 'aR01kVCiLGc0enW0',
+      clientSecret: 'AYKr8TQGD05Y2JaLlAa0-Brd84A2ehAG',
+      appInstallationUID: '65074a21d3f1e80012ec036c',
+    },
+    callbackURL: '/auth/callback'
   },
   (accessToken, refreshToken, profile, next) => {
     // preform user get or creation
@@ -42,14 +43,16 @@ const strategy = new ContentstackStrategy(
 passport.use("contentstack", strategy);
 
 app.get("/", ensureIsAuthenticated, (req, res) => {
-  const { email } = req.user;
+  const { email } = req.user as User;
   return res.json({
     email,
   });
 });
 
 app.get("/logout", function (req, res) {
-  req.logout();
+  req.logout((err) => {
+    console.log('err', err);
+  });
   return res.json({
     msg: "logout was successful",
   });
@@ -73,4 +76,13 @@ function ensureIsAuthenticated(req, res, next) {
   return res.json({
     msg: "user unauthenticated",
   });
+}
+
+interface User {
+  uid: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  username: string;
+  region?: Regions | string;
 }
