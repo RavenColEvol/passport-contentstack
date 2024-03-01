@@ -26,12 +26,13 @@ specifying a client ID, client secret, and callback URL.
 
 ```javascript
 passport.use(new ContentstackStrategy({
-    clientID: CONTENTSTACK_CLIENT_ID,
-    clientSecret: CONTENTSTACK_CLIENT_SECRET,
-    authorizationURL:
-      "https://app.contentstack.com/apps/<APP_INSTALLATION_UID>/authorize",
-    callbackURL: "http://localhost:3000/auth/callback",
-    region: "<NA|EU|AZURE_NA|AZURE_EU>",
+    oauthConfig: [{
+      region: Regions.NA,
+      clientID: CONTENTSTACK_CLIENT_ID,
+      clientSecret: CONTENTSTACK_CLIENT_SECRET,
+      appInstallationUID: CONTENTSTACK_APP_UID,
+    }],
+    callbackURL: '/auth/callback',
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate({ email: profile.email }, function (err, user) {
