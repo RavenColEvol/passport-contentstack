@@ -36,6 +36,7 @@
   ],
   "dependencies": {
     "oauth": "^0.10.0",
+    "passport": "^0.7.0",
     "passport-oauth2": "^1.8.0",
     "url": "^0.11.3"
   },

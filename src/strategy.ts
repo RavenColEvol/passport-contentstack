@@ -76,9 +76,8 @@ class ContentstackStrategy extends Strategy {
       if (!api_url) { throw TypeError(`Missing apiURL for ${region} region`); }
       if (!region_url) { throw TypeError(`Missing regionURL for ${region} region`); }
 
-      this._regionParams = {
-        [region]: { profileURL: `${api_url}/v3/user` },
-      }
+      this._regionParams[region] = { profileURL: `${api_url}/v3/user` };
+
       const authorizationURL = `${region_url}/apps/${appInstallationUID}/authorize`;
       const tokenURL =  `${region_url}/apps-api/apps/token`;
       const oauth2 = new OAuth2(
@@ -187,6 +186,9 @@ class ContentstackStrategy extends Strategy {
   }
 
   userProfile(region, accessToken, done) {
+    if (!this._regionParams[region]) {
+      return done(new Error(`The region is not found in Contentstack Passport: ${region}`));
+    }
     const oauth2 = this._regionOAuth2[region];
     const { profileURL } = this._regionParams[region];
     return oauth2.get(profileURL, accessToken, (error, body: string, res) => {
