@@ -4,6 +4,8 @@ export enum Regions {
   AZURE_NA = "AZURE_NA",
   AZURE_EU = "AZURE_EU",
   GCP_NA = "GCP_NA",
+  AU = "AU",
+  GCP_EU = "GCP_EU",
 }
 
 export const regionBaseURLs = {
@@ -12,6 +14,8 @@ export const regionBaseURLs = {
   [Regions.AZURE_NA]: "https://azure-na-app.contentstack.com",
   [Regions.AZURE_EU]: "https://azure-eu-app.contentstack.com",
   [Regions.GCP_NA]: "https://gcp-na-app.contentstack.com",
+  [Regions.AU]: "https://au-app.contentstack.com",
+  [Regions.GCP_EU]: "https://gcp-eu-app.contentstack.com",
 };
 
 export const regionAPIBaseURLs = {
@@ -20,6 +24,8 @@ export const regionAPIBaseURLs = {
   [Regions.AZURE_NA]: "https://azure-na-api.contentstack.com",
   [Regions.AZURE_EU]: "https://azure-eu-api.contentstack.com",
   [Regions.GCP_NA]: "https://gcp-na-api.contentstack.com",
+  [Regions.AU]: "https://au-api.contentstack.com",
+  [Regions.GCP_EU]: "https://gcp-eu-api.contentstack.com",
 };
 
 export interface User {
